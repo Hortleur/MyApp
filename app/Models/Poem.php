@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Contracts\Pagination\Paginator;
 
 class Poem extends Model
 {
@@ -15,9 +16,9 @@ class Poem extends Model
      */
     protected $table = 'poem';
 
-    public static function getAll(): \Illuminate\Contracts\Pagination\LengthAwarePaginator
+    public static function getAll(): Paginator
     {
-        return DB::table('poem')->paginate();
+        return DB::table('poem')->simplePaginate();
     }
 
     public static function findOrFail($id): \Illuminate\Database\Query\Builder
