@@ -21,6 +21,11 @@ class Genre extends Model
         return DB::table('genre')->simplePaginate();
     }
 
+    public static function findOrFail($id)
+    {
+        return DB::table('genre')->where('id', '=', "$id");
+    }
+
     public function poem(): BelongsTo
     {
         return $this->belongsTo(Poem::class);
