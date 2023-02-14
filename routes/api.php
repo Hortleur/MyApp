@@ -25,3 +25,6 @@ Route::apiResource('poem',PoemController::class);
 
 //Genre
 Route::apiResource('genre', GenreController::class);
+
+//Topic
+Route::apiResource('topic', \App\Http\Controllers\TopicsController::class);

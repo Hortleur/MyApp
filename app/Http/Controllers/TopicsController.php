@@ -5,17 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\Topics;
 use App\Http\Requests\StoreTopicsRequest;
 use App\Http\Requests\UpdateTopicsRequest;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
 
 class TopicsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
     public function index()
     {
-        //
+        return new JsonResponse(Topics::getAll());
     }
 
     /**
