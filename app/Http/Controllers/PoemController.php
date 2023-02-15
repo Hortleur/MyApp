@@ -56,6 +56,12 @@ class PoemController extends Controller
        return new JsonResponse($poem);
     }
 
+    public function getAllByGenre($genreId): JsonResponse
+    {
+        $poem = Poem::getAllByGenre($genreId);
+        return new JsonResponse($poem);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

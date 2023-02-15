@@ -12,14 +12,14 @@ class Topics extends Model
 
     protected $table = 'topic';
 
-    public static function getAll()
+    public static function getAll(): \Illuminate\Contracts\Pagination\LengthAwarePaginator
     {
         return DB::table('topic')->paginate();
     }
 
-    public static function getOne($id)
+    public static function findOrFail($id): \Illuminate\Database\Query\Builder
     {
-        return DB::table('topic')->where('id', '=', '$id');
+        return DB::table('topic')->where('id', '=', "$id");
     }
 
     public function poem()

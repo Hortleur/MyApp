@@ -6,13 +6,14 @@ use App\Models\Genre;
 use App\Http\Requests\StoreGenreRequest;
 use App\Http\Requests\UpdateGenreRequest;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Response;
 
 class GenreController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
     public function index(): JsonResponse
     {
@@ -22,7 +23,7 @@ class GenreController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -32,8 +33,8 @@ class GenreController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreGenreRequest  $request
-     * @return \Illuminate\Http\Response
+     * @param StoreGenreRequest $request
+     * @return void
      */
     public function store(StoreGenreRequest $request)
     {
@@ -43,8 +44,8 @@ class GenreController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Genre  $genre
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return JsonResponse
      */
     public function show($id): JsonResponse
     {
@@ -55,8 +56,8 @@ class GenreController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Genre  $genre
-     * @return \Illuminate\Http\Response
+     * @param Genre $genre
+     * @return Response
      */
     public function edit(Genre $genre)
     {
@@ -67,8 +68,8 @@ class GenreController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdateGenreRequest  $request
-     * @param  \App\Models\Genre  $genre
-     * @return \Illuminate\Http\Response
+     * @param Genre $genre
+     * @return Response
      */
     public function update(UpdateGenreRequest $request, Genre $genre)
     {
@@ -78,8 +79,8 @@ class GenreController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Genre  $genre
-     * @return \Illuminate\Http\Response
+     * @param Genre $genre
+     * @return Response
      */
     public function destroy(Genre $genre)
     {

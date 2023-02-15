@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TopicsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PoemController;
@@ -21,10 +22,17 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // Poems
-Route::apiResource('poem',PoemController::class);
+Route::controller(PoemController::class)->group(function(){
+   Route::get('/', 'index');
+   Route::get("/id", 'show');
+   Route::get('/genre/id',  'getAllByGenre');
+});
 
 //Genre
-Route::apiResource('genre', GenreController::class);
+Route::controller(GenreController::class)->group(function (){
+    Route::get('/genre', 'index');
+    Route::get('/genre/{id}', 'show');
+});
 
 //Topic
-Route::apiResource('topic', \App\Http\Controllers\TopicsController::class);
+Route::apiResource('topic', TopicsController::class);

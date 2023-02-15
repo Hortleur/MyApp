@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\DB;
 
 class Poem extends Model
@@ -28,6 +30,11 @@ class Poem extends Model
     public function genre()
     {
         return $this->hasMany(Genre::class,  'genre_id');
+    }
+
+    public static function getAllByGenre($genreId): Paginator
+    {
+        return DB::table('poem')->where("genre_id", "=", "$genreId")->paginate();
     }
 
     public function topic()

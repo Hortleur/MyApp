@@ -44,12 +44,12 @@ class TopicsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Topics  $topics
-     * @return \Illuminate\Http\Response
+     *      * @return JsonResponse
      */
-    public function show(Topics $topics)
+    public function show($id): JsonResponse
     {
-        //
+        $topic = Topics::findOrFail($id)->get();
+        return new JsonResponse($topic);
     }
 
     /**

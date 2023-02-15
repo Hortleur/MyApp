@@ -4,9 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Database\Query\Builder;
 class Genre extends Model
 {
     use HasFactory;
@@ -16,15 +18,16 @@ class Genre extends Model
      */
     protected $table = 'genre';
 
-    public static function getAll(): Paginator
+    public static function getAll(): \Illuminate\Support\Collection
     {
-        return DB::table('genre')->simplePaginate();
+        return DB::table('genre')->get();
     }
 
-    public static function findOrFail($id)
+    public static function findOrFail($id): Builder
     {
         return DB::table('genre')->where('id', '=', "$id");
     }
+
 
     public function poem(): BelongsTo
     {
