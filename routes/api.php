@@ -23,9 +23,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // Poems
 Route::controller(PoemController::class)->group(function(){
-   Route::get('/', 'index');
-   Route::get("/id", 'show');
-   Route::get('/genre/id',  'getAllByGenre');
+   Route::get('/poem', 'index');
+   Route::get("/poem/{id}", 'show');
+   Route::get('/poem/{genreId}',  'getAllByGenre');
 });
 
 //Genre
@@ -35,4 +35,7 @@ Route::controller(GenreController::class)->group(function (){
 });
 
 //Topic
-Route::apiResource('topic', TopicsController::class);
+Route::controller(TopicsController::class)->group(function (){
+    Route::get('/topic', 'index');
+    Route::get('/topic/{id}','show');
+});

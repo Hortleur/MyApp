@@ -21,27 +21,6 @@ class TopicsController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreTopicsRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreTopicsRequest $request)
-    {
-        //
-    }
-
-    /**
      * Display the specified resource.
      *
      *      * @return JsonResponse
@@ -50,39 +29,5 @@ class TopicsController extends Controller
     {
         $topic = Topics::findOrFail($id)->get();
         return new JsonResponse($topic);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Topics  $topics
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Topics $topics)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateTopicsRequest  $request
-     * @param  \App\Models\Topics  $topics
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateTopicsRequest $request, Topics $topics)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Topics  $topics
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Topics $topics)
-    {
-        //
     }
 }

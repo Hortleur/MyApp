@@ -5,7 +5,9 @@ namespace App\Models;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Query\Builder;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
 
 class Poem extends Model
@@ -17,17 +19,17 @@ class Poem extends Model
      */
     protected $table = 'poem';
 
-    public static function getAll(): \Illuminate\Contracts\Pagination\LengthAwarePaginator
+    public static function getAll(): LengthAwarePaginator
     {
         return DB::table('poem')->paginate();
     }
 
-    public static function findOrFail($id): \Illuminate\Database\Query\Builder
+    public static function findOrFail($id): Builder
     {
         return DB::table('poem')->where('id', '=', "$id");
     }
 
-    public function genre()
+    public function genre(): HasMany
     {
         return $this->hasMany(Genre::class,  'genre_id');
     }

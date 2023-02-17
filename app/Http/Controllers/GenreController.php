@@ -21,27 +21,6 @@ class GenreController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param StoreGenreRequest $request
-     * @return void
-     */
-    public function store(StoreGenreRequest $request)
-    {
-        //
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param $id
@@ -53,37 +32,4 @@ class GenreController extends Controller
         return new JsonResponse($genre);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param Genre $genre
-     * @return Response
-     */
-    public function edit(Genre $genre)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateGenreRequest  $request
-     * @param Genre $genre
-     * @return Response
-     */
-    public function update(UpdateGenreRequest $request, Genre $genre)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param Genre $genre
-     * @return Response
-     */
-    public function destroy(Genre $genre)
-    {
-        //
-    }
 }
